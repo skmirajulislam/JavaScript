@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="first" class="hey" data-game="Mario" data-player="Miraj">
+        hey i am first container
+    </div>
+    <p>Hello developer</p>
+    <script>
+        // used to check and get tag attribute by id or class name
+        // let a = document.getElementById('first') Same as given below its Better option
+        let  a = first.getAttribute('class')
+        console.log(a)
+
+        console.log(first.hasAttribute('class'))
+        console.log(first.hasAttribute('style'))
+
+        // first.setAttribute("hidden","true") -> {for set attribute within tag}
+        // first.removeAttribute('class') -> {for remove attribute within tag}
+
+        console.log(first.attributes)
+
+        // seting own pre defined attribute 
+        // using data- (js custom attribute)
+        console.log(first.dataset);
+        console.log(first.dataset.game);
+        console.log(first.dataset.player);
+    </script>
+</body>
+</html>

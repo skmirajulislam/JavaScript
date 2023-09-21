@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="box">
+        <p id="l0">Coding is best Thing</p>
+        <p id="l1">I am Miraj</p>
+        <span id="l2">Hello Developer</span>
+        <p id="l3"></p>
+        <p id="l4"></p>
+    </div>
+    <div>
+        <p id="a1"></p>
+        <p id="a2"></p>
+    </div>
+    <script>
+        let b = document.getElementsByTagName('span')
+        console.log(b[0].style.color = 'red')
+
+        let a = document.getElementById('l2');
+
+        console.log(a.innerHTML)
+        console.log(a.outerHTML)
+
+        // Lets copy ing inner & outer Html from id l0 to l1
+
+        let l0 = document.getElementById('l0');
+        let l3 = document.getElementById('l3');
+
+        l3.innerHTML = l0.innerHTML; // content element changed
+
+        let l4 = document.getElementById('l4');
+
+        l4.innerHTML = b[0].outerHTML; // whole html changed
+
+        // let insert some thing in side  id a1 and a2
+
+        let a1 =  document.getElementById('a1');
+        let a2 =  document.getElementById('a2');
+
+        a1.innerHTML = '<b> INDIA IS SUPER POWER </b>'
+        a2.outerHTML = '<p style="color:red;"> INDIA </p>'
+        
+    </script>
+</body>
+</html>

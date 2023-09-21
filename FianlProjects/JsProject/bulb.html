@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bulb{
+            height: 341px;
+            width: 341px;
+            background: yellow;
+            border-radius: 200px;
+        }
+
+        .bulbstop{
+            height: 341px;
+            width: 341px;
+        }
+    </style>
+</head>
+<body>
+    <div id="bulb" class="bulbstop bulb"></div>
+    <script>
+        setInterval(async ()=>{
+            document.querySelector('#bulb').classList.toggle('bulb');
+        },300)
+    </script>
+</body>
+</html>

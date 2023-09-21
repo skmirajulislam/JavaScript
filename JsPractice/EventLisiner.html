@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <button id="btn">Click Me</button>
+    </div>
+    <script>
+        let btn = document.getElementById('btn');
+        /*
+        We can also write this type :-
+
+        btn.addEventListener('click',(evnt)=>{
+            alert('HELLO WORLD')
+        })
+
+
+        
+        Event	Description
+        onchange  ->	An HTML element has been changed
+        onmouseover	-> The user moves the mouse over an HTML element
+        onmouseout ->	The user moves the mouse away from an HTML element
+        onkeydown ->	The user pushes a keyboard key
+        onload ->	The browser has finished loading the page
+        onclick	-> The user clicks an HTML element
+        onmouseenter
+        */
+
+        let x = (evnt) => {
+            alert('HELLO INDIA')
+        }
+        btn.addEventListener('click', x)
+
+        let y = (evnt) => {
+            alert('HELLO WORLD')
+        }
+        btn.addEventListener('click', y)
+
+        let a = prompt('Enter a event Name ')
+        if (a === '1') {
+            btn.removeEventListener('click', x)
+        }
+    </script>
+</body>
+
+</html>

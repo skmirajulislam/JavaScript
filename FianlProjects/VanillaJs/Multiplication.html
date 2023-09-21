@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Lobster');
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poopins', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #808080;
+            color: #fff;
+        }
+
+        .box-max {
+            background-color: aquamarine;
+            border: lightcoral;
+            border-radius: 20px;
+        }
+
+        .pid {
+            color: brown;
+            font-family: courier;
+            text-align: center;
+        }
+
+        .hid {
+            color: darksalmon;
+            font-family: 'Courier New', Courier, monospace;
+            text-align: center;
+        }
+
+        .btn {
+            display: block;
+            margin: 50px auto;
+            width: fit-content;
+            border: 1px solid #ff004f;
+            padding: 14px 50px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #fff;
+            justify-content: space-between;
+            transition: 1s;
+        }
+
+        .btn:hover {
+            background: #ff004f;
+        }
+
+        input {
+            display: block;
+            margin: 50px auto;
+            width: fit-content;
+            border: 1px solid #ff004f;
+            padding: 14px 50px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: black;
+        }
+
+        .p1 {
+            margin-top: 20px;
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+            color: #ff004f;
+        }
+
+        h2 {
+            padding-top: 20px;
+            text-align: center;
+            font-family: 'Lobster';
+            color: #ababab;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="card">
+        <div class="box-max">
+            <div class="box-mini">
+                <h2>Welcome to Multiplication Table</h2>
+                <p class="p1">Put an input inside this block then press submit.</p>
+
+                <input type="number" placeholder="Enter a multiplier" onkeypress="return onlyNumberKey(event)"
+                    name="number" id="data">
+
+                <p class="pid">Use this free interactive multiplication chart for practicing multiplication
+                    facts,<br>
+                    finding multiplication patterns</p><br>
+                <h2 class="hid" id="output">Result is..!</h2>
+
+                <button type="submit" class="btn" onclick="input()">Submit</button>
+                <p class="p2">Enter valid number only..!</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        /*
+            alert(data);
+            document.write(data);
+            console.log(data);
+        */
+        function input() {
+            var text = ""
+            var data = parseInt(document.getElementById('data').value);
+            for (let i = 1; i <= 10; i++) {
+                text += data + "*" + i + "=" + data * i + "<br>";
+            }
+            document.getElementById("output").innerHTML = text;
+        }
+
+    </script>
+
+    <script>
+        function onlyNumberKey(evt) {
+            var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
+            if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+                return false;
+            return true;
+        }
+    </script>
+
+</body>
+
+</html>
