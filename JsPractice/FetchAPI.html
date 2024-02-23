@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API</title>
+</head>
+
+<body>
+    <!--25804b4535d34780949141710230811-->
+    <script>
+        // its a ajex trum [Asunchronous JS & XML]
+        // its used to send HTTP request to API or HTTP server is an promise baased API
+        let p = fetch("https://quote-garden.onrender.com/api/v3/quotes", { method: 'GET' }) // method section is not mandatory if you want only
+        p.then((value1) => {
+            console.log(value1.status); // server status code 
+            console.log(value1.ok);
+            return value1.json(); // .text(), .blob()
+        }).then((value2) => {
+            console.log(value2);
+        })
+
+        // we can use  only one method for accesing Messange body
+
+        /*
+        http methods for Client server:-
+
+        GET - GET is used to request data from a specified resource.
+        POST - POST is used to send data to a server to create/update a resource
+        PUT - PUT is used to send data to a server to create/update a resource.
+        HEAD - HEAD is almost identical to GET, but without the response body
+        DELETE - The DELETE method deletes the specified resource.
+        PATCH - The PATCH method is used to apply partial modifications to a resource.
+        OPTIONS - The OPTIONS method describes the communication options for the target resource.
+        CONNECT - The CONNECT method is used to start a two-way communications (a tunnel) with the requested resource.
+        TRACE - The TRACE method is used to perform a message loop-back test that tests the path for the target resource (useful for debugging purposes).
+        */
+    </script>
+</body>
+
+</html>

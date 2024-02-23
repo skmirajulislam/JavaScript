@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&display=swap');
+
+        body {
+            width: 100%;
+            height: 100vh;
+            background-image: url('./img/Choice.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .box {
+            position: absolute;
+            width: 100%;
+            height: 100vh;
+            background-image: url('./img/pikacho.jpg');
+            background-size: cover;
+            background-position: center;
+            top: 20%;
+            left: 30%;
+            height: 500px;
+            width: 450px;
+            padding: 30p;
+            display: flex;
+            border-radius: 15px;
+            transition: 0.1s;
+            border: 1px solid #ff004f;
+        }
+
+        .A {
+            padding: 5px 30px;
+            position: absolute;
+            border-radius: 15px;
+            top: 20%;
+            left: 25%;
+        }
+
+        .btn {
+            display: block;
+            position: absolute;
+            margin: 50px auto;
+            width: fit-content;
+            border: 1px solid #ff004f;
+            padding: 14px 50px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #fff;
+            justify-content: space-between;
+            transition: 1s;
+            left: 32%;
+            top: 40%;
+        }
+
+        .btn:hover {
+            background: #ff004f;
+        }
+
+        .X{
+            position: absolute;
+            display: flex;
+            color: cyan;
+            top: 30%;
+            left: 35%;
+            font-style: oblique;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        .Title {
+            color: #ff004f;
+            position: absolute;
+            top: 10px;
+            left: 5%;
+            font-style: initial;
+            font-family: 'Oleo Script Swash Caps';
+        }
+
+        .head {
+            color: aliceblue;
+            position: absolute;
+            color: whitesmoke;
+            color: khaki;
+            top: 10px;
+            left: 32%;
+            font-style: initial;
+            font-family: Helvetica, Arial, Sans-Serif;
+        }
+
+        .sug {
+            top: 65%;
+            left: 20%;
+            color: #fff;
+            position: absolute;
+            font-style: oblique;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h2 class="Title">Explora</h2>
+        <div class="box">
+            <h2 class="head">Turn is Fun</h2>
+            <input type="number" placeholder="Enter a number" onkeypress="return onlyNumberKey(event)" name="number"
+                id="Input" class="A">
+            <p id="Output" class="X">Output</p>
+            <button type="button" name="button" id="click" class="btn" onclick="Verify()">Yahoo..!</button>
+            <p class="sug">Entar a Value between 0 to 100</p>
+        </div>
+    </main>
+    <script>
+         onlyNumberKey = (evt) => {
+            var ASCIICode = (evt.which) ? evt.which : evt.keyCode;
+            if (ASCIICode > 31 && (ASCIICode < 48 || ASCIICode > 57))
+                return false;
+            return true;
+        }
+    </script>
+    <script>
+        Verify = () => {
+            let num = parseInt(document.getElementById('Input').value);
+            let dummy = parseInt(Math.floor((Math.random() * 10) + 1))
+            if (num > dummy) {
+                document.getElementById('Output').innerHTML = `${num} is Small to closer`;
+            }
+            else if(num < dummy){
+                document.getElementById('Output').innerHTML = `${num} is Larger to closer`;
+            }
+            else{
+                if(isNaN(num)){
+                    document.getElementById('Output').innerHTML = `Enter Agein..!`;
+                }
+                else{
+                    document.getElementById('Output').innerHTML = `Congratulation ${num} is ${dummy}`;
+                }
+                
+            }
+        }
+    </script>
+</body>
+
+</html>

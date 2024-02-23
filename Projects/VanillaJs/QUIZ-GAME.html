@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-image: url('./img/girl.jpg');
+            background-size: cover;
+            margin: 0;
+        }
+
+        .bolder {
+            background-color: palevioletred;
+            border-radius: 10px;
+            border-style: outset;
+            margin: 10px;
+        }
+
+        h2 {
+            text-align: right;
+            margin-right: 10px;
+            padding-right: 10px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: khaki;
+            text-shadow: #FC0 1px 0 10px;
+        }
+
+        .header {
+            text-align: center;
+            font-size: larger;
+            font-family: 'Courier New', Courier, monospace;
+            padding: 10px;
+        }
+
+        h1 {
+            text-shadow: 1px 1px 2px pink;
+            margin: 0;
+        }
+
+        #qun {
+            font-size: 20px;
+            text-align: center;
+            position: absolute;
+            top: 13%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .option {
+            text-align: center;
+            font-size: 20px;
+            background-color: #FC0;
+            border-radius: 10px;
+            margin-top: 50px;
+            margin-left: 400px;
+            margin-right: 400px;
+            border-style: groove;
+            padding: 10px;
+        }
+
+        .moveMent h2 {
+            background-color: coral;
+            width: 150px;
+            border-radius: 13px;
+            text-align: center;
+            border-style: outset;
+        }
+
+        #m1 {
+            position: absolute;
+            left: 10%;
+            bottom: 20%;
+        }
+
+        #m2 {
+            position: absolute;
+            bottom: 20%;
+            right: 10%;
+        }
+
+        .refresh .btn {
+            padding: 14px 60px;
+            font-size: 18px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            background-color: burlywood;
+            position: absolute;
+            font-family: 'Courier New', Courier, monospace;
+            left: 45%;
+            bottom: 20%;
+        }
+
+        @media screen and (max-width: 600px) {
+            #qun {
+                position: absolute;
+                top: 15%;
+                left: 50%;
+            }
+
+            .option {
+                text-align: center;
+                font-size: 20px;
+                background-color: #FC0;
+                border-radius: 10px;
+                margin: 50px;
+                border-style: groove;
+            }
+
+            #m1 {
+                position: absolute;
+                bottom: 10%;
+                left: 10%;
+            }
+
+            #m2 {
+                position: absolute;
+                bottom: 10%;
+                right: 10%;
+            }
+
+            .refresh .btn {
+                padding: 14px 60px;
+                font-size: 18px;
+                margin-top: 20px;
+                cursor: pointer;
+                border-radius: 5px;
+                background-color: burlywood;
+                position: absolute;
+                font-family: 'Courier New', Courier, monospace;
+                left: 35%;
+                bottom: 20%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Quiz Game By SK</h1>
+    </div>
+    <div class="bolder">
+        <div id="qun"></div>
+        <h2>Point 1</h2>
+    </div>
+    <div class="option" id="q1"></div>
+    <div class="option" id="q2"></div>
+    <div class="option" id="q3"></div>
+    <div class="option" id="q4"></div>
+    <div class="moveMent" id="m1">
+        <h2>Previous</h2>
+    </div>
+    <div class="moveMent" id="m2">
+        <h2>Next</h2>
+    </div>
+    <div id="resultImage" style="display: none; text-align: center;">
+        <img id="resultImg" src="" alt="Result Image" style="max-width: 100%; max-height: 100%;">
+    </div>
+    <div class="refresh" style="display: none; text-align: center;">
+        <button class="btn" onclick="myFunction()">Replay</button>
+    </div>
+</body>
+<script>
+    const quizObjects = [
+        {
+            catagory: 'food drink',
+            id: 'qa-1',
+            currecAnswer: 'tibbet',
+            options: ['india', 'tibbet', 'china', 'thiland'],
+            question: "Sera monastery located on which country ?"
+        },
+        {
+            category: 'geography',
+            id: 'qa-2',
+            correctAnswer: 'france',
+            options: ['italy', 'france', 'spain', 'germany'],
+            question: 'The Eiffel Tower is located in which country?'
+        },
+        {
+            category: 'science',
+            id: 'qa-3',
+            correctAnswer: 'dna',
+            options: ['rna', 'protein', 'dna', 'enzyme'],
+            question: 'What does DNA stand for?'
+        },
+        {
+            category: 'history',
+            id: 'qa-4',
+            correctAnswer: 'american revolution',
+            options: ['french revolution', 'industrial revolution', 'american revolution', 'russian revolution'],
+            question: 'Which revolution took place in the late 18th century in the American colonies?'
+        },
+        {
+            category: 'movies',
+            id: 'qa-5',
+            correctAnswer: 'shawshank redemption',
+            options: ['pulp fiction', 'the godfather', 'shawshank redemption', 'fight club'],
+            question: 'Which movie is often considered the greatest of all time?'
+        },
+        {
+            category: 'sports',
+            id: 'qa-6',
+            correctAnswer: 'football',
+            options: ['basketball', 'tennis', 'football', 'golf'],
+            question: 'Which sport is known as "The Beautiful Game"?'
+        },
+        {
+            category: 'science',
+            id: 'qa-7',
+            correctAnswer: 'gravity',
+            options: ['magnetism', 'electricity', 'gravity', 'friction'],
+            question: 'What force is responsible for the attraction between two objects with mass?'
+        },
+        {
+            category: 'music',
+            id: 'qa-8',
+            correctAnswer: 'beatles',
+            options: ['rolling stones', 'beatles', 'queen', 'led zeppelin'],
+            question: 'Which band is often referred to as the "Fab Four"?'
+        },
+        {
+            category: 'technology',
+            id: 'qa-9',
+            correctAnswer: 'javascript',
+            options: ['html', 'css', 'javascript', 'python'],
+            question: 'Which programming language is commonly used for web development?'
+        },
+        {
+            category: 'animals',
+            id: 'qa-10',
+            correctAnswer: 'elephant',
+            options: ['lion', 'giraffe', 'elephant', 'zebra'],
+            question: 'Which mammal is the largest land animal on Earth?'
+        },
+        {
+            category: 'history',
+            id: 'qa-11',
+            correctAnswer: 'world war ii',
+            options: ['world war i', 'vietnam war', 'world war ii', 'korean war'],
+            question: 'In which war did the Battle of Normandy take place?'
+        },
+        {
+            category: 'geography',
+            id: 'qa-12',
+            correctAnswer: 'amazon',
+            options: ['nile', 'amazon', 'yangtze', 'mississippi'],
+            question: 'Which river is the second-longest river in the world?'
+        },
+        {
+            category: 'science',
+            id: 'qa-13',
+            correctAnswer: 'photosynthesis',
+            options: ['respiration', 'photosynthesis', 'digestion', 'circulation'],
+            question: 'What process do plants use to convert sunlight into energy?'
+        },
+        {
+            category: 'movies',
+            id: 'qa-14',
+            correctAnswer: 'forrest gump',
+            options: ['the shawshank redemption', 'pulp fiction', 'forrest gump', 'the godfather'],
+            question: 'Which movie features the famous line, "Life is like a box of chocolates."?'
+        },
+        {
+            category: 'sports',
+            id: 'qa-15',
+            correctAnswer: 'basketball',
+            options: ['soccer', 'basketball', 'baseball', 'hockey'],
+            question: 'In which sport did Michael Jordan achieve his greatest success?'
+        }
+    ];
+
+    const questionContainer = document.querySelector('#qun');
+    const optionsContainer0 = document.querySelector('#q1');
+    const optionsContainer1 = document.querySelector('#q2');
+    const optionsContainer2 = document.querySelector('#q3');
+    const optionsContainer3 = document.querySelector('#q4');
+    const leftOperation = document.querySelector('#m1');
+    const rightOperation = document.querySelector('#m2');
+
+    let currentIndex = 0;
+    const rank = [];
+
+    function displayQuestion(index) {
+        optionsContainer0.innerHTML = '';
+        optionsContainer1.innerHTML = '';
+        optionsContainer2.innerHTML = '';
+        optionsContainer3.innerHTML = '';
+
+        questionContainer.textContent = quizObjects[index].question;
+        optionsContainer0.textContent = quizObjects[index].options[0];
+        optionsContainer1.textContent = quizObjects[index].options[1];
+        optionsContainer2.textContent = quizObjects[index].options[2];
+        optionsContainer3.textContent = quizObjects[index].options[3];
+    }
+
+    function checkAnswer(index) {
+        if (quizObjects[currentIndex].options[index] === quizObjects[currentIndex].correctAnswer) {
+            rank.push(1);
+        } else {
+            // You may handle wrong answers here if needed
+        }
+    }
+
+    function myFunction() {
+        location.reload();
+    }
+
+    function showRank() {
+        questionContainer.textContent = `Your Rank: ${rank.length} out of ${quizObjects.length}`;
+        optionsContainer0.remove();
+        optionsContainer1.remove();
+        optionsContainer3.remove();
+        optionsContainer2.remove();
+
+        const resultImageContainer = document.getElementById('resultImage');
+        const resultImage = document.getElementById('resultImg');
+        const resetBtn = document.querySelector('.refresh');
+
+        if (rank.length <= 9 && rank.length > 5) {
+            resultImage.src = 'https://cdn0.iconfinder.com/data/icons/social-media-gamification/1000/Second_Rank-512.png';
+            resultImageContainer.style.display = 'block';
+            resultImageContainer.style.width = '300px'
+            resultImageContainer.style.height = '300px';
+            resultImageContainer.style.margin = 'auto';
+        }
+        else if (rank.length > 9) {
+            resultImage.src = 'https://cdn0.iconfinder.com/data/icons/social-media-gamification/1000/First_Rank-512.png';
+            resultImageContainer.style.display = 'block';
+            resultImageContainer.style.width = '300px'
+            resultImageContainer.style.height = '300px';
+            resultImageContainer.style.margin = 'auto';
+        }
+        else if (rank.length <= 5) {
+            resultImage.src = 'https://cdn0.iconfinder.com/data/icons/social-media-gamification/1000/Third_Rank-512.png';
+            resultImageContainer.style.display = 'block';
+            resultImageContainer.style.width = '300px'
+            resultImageContainer.style.height = '300px';
+            resultImageContainer.style.margin = 'auto';
+        }
+
+        resetBtn.style.display = 'block';
+
+    }
+
+    optionsContainer0.addEventListener('click', () => {
+        optionsContainer0.style.backgroundColor = '#DFCFBE';
+        optionsContainer1.style.backgroundColor = '#FC0';
+        optionsContainer2.style.backgroundColor = '#FC0';
+        optionsContainer3.style.backgroundColor = '#FC0';
+        checkAnswer(0);
+        currentIndex++;
+        if (currentIndex < quizObjects.length) {
+            displayQuestion(currentIndex);
+        } else {
+            showRank();
+        }
+    });
+
+    optionsContainer1.addEventListener('click', () => {
+        optionsContainer3.style.backgroundColor = '#FC0';
+        optionsContainer2.style.backgroundColor = '#FC0';
+        optionsContainer0.style.backgroundColor = '#FC0';
+        optionsContainer1.style.backgroundColor = '#DFCFBE';
+        checkAnswer(1);
+        currentIndex++;
+        if (currentIndex < quizObjects.length) {
+            displayQuestion(currentIndex);
+        } else {
+            showRank();
+        }
+    });
+
+    optionsContainer2.addEventListener('click', () => {
+        optionsContainer1.style.backgroundColor = '#FC0';
+        optionsContainer3.style.backgroundColor = '#FC0';
+        optionsContainer0.style.backgroundColor = '#FC0';
+        optionsContainer2.style.backgroundColor = '#DFCFBE';
+        checkAnswer(2);
+        currentIndex++;
+        if (currentIndex < quizObjects.length) {
+            displayQuestion(currentIndex);
+        } else {
+            showRank();
+        }
+    });
+
+    optionsContainer3.addEventListener('click', () => {
+        optionsContainer1.style.backgroundColor = '#FC0';
+        optionsContainer2.style.backgroundColor = '#FC0';
+        optionsContainer0.style.backgroundColor = '#FC0';
+        optionsContainer3.style.backgroundColor = '#DFCFBE';
+        checkAnswer(3);
+        currentIndex++;
+        if (currentIndex < quizObjects.length) {
+            displayQuestion(currentIndex);
+        } else {
+            showRank();
+        }
+    });
+
+    const operation = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14];
+    leftOperation.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            displayQuestion(currentIndex);
+        }
+    });
+
+    rightOperation.addEventListener('click', () => {
+        currentIndex++;
+        if (currentIndex < quizObjects.length) {
+            displayQuestion(currentIndex);
+        } else {
+            showRank();
+        }
+    });
+</script>
+
+</html>

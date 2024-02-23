@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Watch</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #333;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-top: 20px;
+            color: #fff;
+        }
+
+        .box {
+            background-color: #444;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .box:hover {
+            background-color: #555;
+        }
+
+        p {
+            font-size: 18px;
+            color: #fff;
+        }
+
+        #CurrTime {
+            font-size: 120px;
+            color: #fff;
+            margin: 20px 0;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            .box {
+                margin: 10px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            #CurrTime {
+                font-size: 80px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Digital Watch By MIRAJ</h1>
+    <div class="box">
+        <p id="datetime">
+            Date : <span id="date"></span> &nbsp;
+            Day : <span id="day"></span> &nbsp;
+            Month : <span id="month"></span> &nbsp;
+            Year : <span id="year"></span> &nbsp;
+        </p><br>
+        <p id="CurrTime"></p>
+    </div>
+    <script>
+        updateTime = () => {
+            const now = new Date();
+
+            const dateElement = document.getElementById('date');
+            dateElement.textContent = now.getDate();
+
+            const dayElement = document.getElementById('day');
+            const dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            dayElement.textContent = dayNames[now.getDay()];
+
+            const monthElement = document.getElementById('month');
+            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            monthElement.textContent = monthNames[now.getMonth()];
+
+            const yearElement = document.getElementById('year');
+            yearElement.textContent = now.getFullYear();
+        }
+
+        // Call updateTime function initially and set an interval to update it every second
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+    <script>
+        CurrTimeData = () => {
+            const now = new Date();
+            const timeElement = document.getElementById('CurrTime');
+            timeElement.textContent = now.toLocaleTimeString();
+        }
+
+        setInterval(CurrTimeData, 1000);
+    </script>
+</body>
+
+</html>

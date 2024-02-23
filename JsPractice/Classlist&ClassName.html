@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        html,body{
+            height: 100%;
+            width: 100%;
+        }
+
+        .yellow{
+            background-color: yellow;
+            color: black;
+        }
+
+        .red{
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div id="first" class="yellow">
+        <span>Hey i am good</span>
+    </div>
+    <script>
+        // it select perticular css class in Html target 
+        first.className = "red"
+
+        // list all class and attribute
+        console.log(first.classList)
+
+        // removing all a particular css class
+        first.classList.remove("red")
+
+        // add new class in class list 
+        first.classList.add('yellow');
+
+        // toggle method add also remove existing class 
+        first.classList.toggle('yellow') // Remove class red
+        first.classList.toggle('yellow') // Add  class red
+
+        console.log(first.classList.contains("yellow")) // checking it is exist or not really
+    </script>
+</body>
+</html>

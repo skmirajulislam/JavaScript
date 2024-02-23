@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        try {
+            harry
+        } catch (error) {
+            console.log(error);
+            console.log(error.name);
+            console.log(error.message);
+            console.log(error.stack);
+        }
+    </script>
+    <script>
+        try {
+            throw new Error('Js is good')
+        } catch (error) {
+            console.log(error);
+            console.log(error.name);
+            console.log(error.message);
+            console.log(error.stack);
+        }
+
+        try {
+            throw new ReferenceError('Python is good')
+        } catch (error) {
+            console.log(error);
+            console.log(error.name);
+            console.log(error.message);
+            console.log(error.stack);
+        }
+    </script>
+    <script>
+        let age = prompt('Enter your age : ')
+        if (age > 120) {
+            try {
+                throw new TypeError('This is outlier');
+                // let err = new TypeError('This is outlier'); also possible
+            } catch (error) {
+                alert(error)
+            }
+        }
+    </script>
+</body>
+
+</html>

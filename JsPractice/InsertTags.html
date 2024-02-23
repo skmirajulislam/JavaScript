@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Iam Starting point of div
+    <div class="container">
+        <div id="first">I am a first element</div>
+    </div>
+    Iam Ending point of div
+    <script>
+        // diffreant html inserting methods
+
+        let a = document.getElementsByTagName('div')[0];
+        a.innerHTML = a.innerHTML+'<h1> Inserted..! </h1>'
+
+        let div = document.createElement('div');
+        div.innerHTML = '<h2> Appending! </h2>';
+        a.append(div)
+        
+        let div1 = document.createElement('div');
+        div1.innerHTML = '<h2> Prepending! </h2>';
+        a.prepend(div1)
+
+        let div2 = document.createElement('div');
+        div2.innerHTML = '<h2> Before! </h2>';
+        a.before(div2)
+
+        let div3 = document.createElement('div');
+        div3.innerHTML = '<h2> After! </h2>';
+        a.after(div3)
+
+        /*
+        let div4 = document.createElement('div');
+        div4.innerHTML = '<h2> Replaceing! </h2>';  Replacing whole taget Element or tag
+        a.replaceWith(div4)
+        */
+        
+    </script>
+</body>
+</html>

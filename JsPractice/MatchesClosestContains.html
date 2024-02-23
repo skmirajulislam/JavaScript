@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="id1" class="box">This is an element <span id="sp1">Span</span></div>
+    <div id="id2" class="box">This is an Box</div>
+    <script>
+        // console.log(id1) not a reliable way so use DOM
+        let  id1 = document.getElementById('id1')
+        let sp1 = document.getElementById('sp1')
+
+        console.log(sp1)
+        console.log(id1)
+
+        console.log(id1.matches('.box'))
+
+        console.log(sp1.closest('.box'))
+        console.log(sp1.closest('#sp1'))
+
+        console.log(id1.contains(sp1))
+        console.log(sp1.contains(sp1))
+    </script>
+</body>
+</html>

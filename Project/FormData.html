@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <title>React App</title>
+  <style>
+    .card {
+      width: 250px;
+      padding: 10px 20px;
+      border-radius: 20px;
+      margin: 50px auto;
+      background-color: rgb(236, 236, 236);
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+
+    .inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 60%;
+      margin: 0 auto;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const Card = ({ name, email, about }) => (
+      <div className="card">
+        <h3>Name: {name}</h3>
+        <p>Email: {email}</p>
+        <p>About: {about}</p>
+      </div>
+    );
+
+    const App = () => {
+      const [formData, setFormData] = React.useState({
+        name: '',
+        email: '',
+        about: '',
+      });
+
+      const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setFormData((prevData) => ({
+          ...prevData,
+          [name]: value,
+        }));
+      };
+
+      return (
+        <div className="App">
+          <div className="inputs">
+            <input
+              name="name"
+              placeholder="Name"
+              value={formData.name}
+              onChange={handleInputChange}
+            />
+            <input
+              name="email"
+              type="email"
+              placeholder="Email"
+              value={formData.email}
+              onChange={handleInputChange}
+            />
+            <textarea
+              name="about"
+              placeholder="About"
+              value={formData.about}
+              onChange={handleInputChange}
+            ></textarea>
+          </div>
+          <Card {...formData} />
+        </div>
+      );
+    };
+
+    const rootElement = ReactDOM.createRoot(document.getElementById("root"));
+    rootElement.render(<App />);
+  </script>
+</body>
+
+</html>

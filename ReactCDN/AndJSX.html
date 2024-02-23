@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!---CDN link for React-->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!--babel CDN is an external liberary for coverting language-->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        // in js And return first false value and last truth value
+        // true && 1 && 0 && 'hola' && false => 0 only return by logical and
+        // 'hola' && true => true only return by logical and
+        // based on bollean logical and 
+
+        function App() {
+            let loged = true;
+            return (
+                <>
+                    { loged && <h1> Welcome to the Portarl </h1>}
+                    <p>Hello {loged ? 'USER' : 'Please Login'}</p>
+                </>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            <>
+                <App />
+            </>
+        );
+    </script>
+</body>
+
+</html>

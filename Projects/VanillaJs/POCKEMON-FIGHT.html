@@ -1,0 +1,256 @@
+<html>
+
+<head>
+        <title>
+                Pokemon Game with fetch
+        </title>
+        <style>
+                body {
+                        font-family: Arial, sans-serif;
+                        background-color: #f0f0f0;
+                        margin: 0;
+                        padding: 0;
+                }
+
+                #header {
+                        text-align: center;
+                        background-color: #4CAF50;
+                        color: #fff;
+                        padding: 10px;
+                        margin-bottom: 70px;
+                }
+
+                #container {
+                        display: flex;
+                        justify-content: space-around;
+                        margin: 20px;
+                }
+
+                #player1 {
+                        width: 450px;
+                        /* padding: 20px; */
+                        /* padding-bottom: 0px; */
+                        background-color: #fff;
+                        border: 1px solid #ddd;
+                        border-radius: 8px;
+                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                }
+
+
+
+                #card1 img {
+                        width: 250px;
+                        height: 250px;
+                        text-align: center;
+                        padding-left: 60px;
+                }
+
+                #player2 {
+                        width: 400px;
+                        /* padding: 20px; */
+                        background-color: #fff;
+                        border: 1px solid #ddd;
+                        border-radius: 8px;
+                        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                }
+
+
+                #card2 img {
+                        width: 150px;
+                        height: 150px;
+                        padding-left: 60px;
+                        /* object-fit: cover;
+    border-radius: 50%; */
+                }
+
+                #card_header {
+                        background-color: #ddd;
+                        padding: 8px;
+                        margin-bottom: 10px;
+                }
+
+                #abilities {
+                        list-style: none;
+                        padding: 20px;
+                        background-color: #ddd;
+                        margin-bottom: 0px;
+                }
+
+                #abilities li {
+                        margin-left: 20px;
+                        background-color: #c6c5c5;
+                        padding-left: 5px;
+                }
+
+                #p1_score {
+                        float: right;
+                }
+
+                #p2_score {
+                        float: right;
+                }
+
+                #experience {
+                        float: right;
+                        padding-right: 40px;
+                        font-size: larger;
+                        font-style: italic;
+                }
+
+                #name {
+                        margin-top: 30px;
+                        padding-left: 20px;
+                        /* font-weight:300; */
+                        font-size: larger;
+                        font-style: italic;
+                }
+
+                #fight {
+                        position: relative;
+                        left: 50%;
+                        width: 70px;
+                        height: 40px;
+                        font-size: larger;
+                        background-color: rgb(243, 85, 85);
+                        border-radius: 5px;
+                        border: none;
+                        cursor: pointer;
+                }
+        </style>
+</head>
+
+<body>
+        <div id="header">
+                <h1>
+                        Pokemon Game
+                </h1>
+        </div>
+        <div style="display: block;">
+                <button id="fight">Fight</button>
+        </div>
+        <div id="container">
+                <!-- player1 -->
+                <div id="player1">
+                        <div id="card_header">
+                                <span id="p1_name"></span>
+                                <span id="p1_score"></span>
+                        </div>
+                        <div id="card1">
+                                <div id="img"></div>
+                                <span id="name"></span>
+                                <span id="experience"></span>
+                                <ul id="abilities">Abilities</ul>
+                        </div>
+                </div>
+                <div id="player2">
+                        <div id="card_header">
+                                <span id="p2_name"></span>
+                                <span id="p2_score"></span>
+                        </div>
+                        <!-- player2 -->
+                        <div id="card2">
+                                <div id="img"></div>
+                                <span id="name"></span>
+                                <span id="experience"></span>
+                                <ul id="abilities">Abilities</ul>
+                        </div>
+                </div>
+        </div>
+        <script>
+                let p1_name = "john";
+                let p2_name = "Alice";
+                function getPokemon() {
+                        fetch("https://pokeapi.co/api/v2/pokemon/")
+                                .then((response) => response.json())
+                                .then((response) => {
+                                        let x = Math.floor(((Math.random()) * 20));
+                                        return fetch(response.results[x].url)
+                                })
+                                .then((response) => response.json())
+                                .then((response) => {
+                                        displayPlayer1(response)
+                                        return fetch("https://pokeapi.co/api/v2/pokemon/")
+                                })
+                                .then((response) => response.json())
+                                .then((response) => {
+                                        let x = Math.floor(((Math.random()) * 20));
+                                        return fetch(response.results[x].url)
+                                })
+                                .then((response) => response.json())
+                                .then((response) => {
+                                        displayPlayer2(response)
+                                })
+                }
+                function displayPlayer1(response) {
+                        document.getElementById('p1_name').innerHTML = p1_name;
+                        document.getElementById('p1_score').textContent = `Score: ${score1}`;
+                        const card1 = document.querySelector('#card1');
+                        card1.querySelector('#name').textContent = response.name;
+                        const imgc = document.createElement('img');
+                        imgc.setAttribute('src', response.sprites.other.dream_world.front_default);
+                        imgc.style.height = '300px';
+                        imgc.style.width = '300px';
+                        card1.querySelector('#img').innerHTML = '';
+                        card1.querySelector('#img').append(imgc);
+                        const lst = card1.querySelector('#abilities');
+                        lst.innerHTML = '';
+                        const abilities = response.abilities;
+                        for (let i of abilities) {
+                                const li = document.createElement('li');
+                                li.textContent = i.ability.name;
+                                lst.append(li);
+                        }
+                        const exp = card1.querySelector('#experience')
+                        exp.textContent = response.base_experience;
+
+                }
+                function displayPlayer2(response) {
+                        document.getElementById('p2_name').textContent = p2_name;
+                        document.getElementById('p2_score').textContent = `Score: ${score2}`;
+                        const card2 = document.querySelector('#card2');
+                        card2.querySelector('#name').textContent = response.name;
+                        const imgc = document.createElement('img');
+                        imgc.setAttribute('src', response.sprites.other.dream_world.front_default);
+                        imgc.style.height = '300px';
+                        imgc.style.width = '300px';
+                        card2.querySelector('#img').innerHTML = '';
+                        card2.querySelector('#img').append(imgc);
+                        const lst = card2.querySelector('#abilities');
+                        lst.innerHTML = '';
+                        const abilities = response.abilities;
+                        for (let i of abilities) {
+                                const li = document.createElement('li');
+                                li.textContent = i.ability.name;
+                                lst.append(li);
+                        }
+                        card2.querySelector('#experience').textContent = response.base_experience;
+                }
+                let score1 = 0;
+                let score2 = 0;
+                const btn = document.getElementById('fight')
+                btn.addEventListener('click', () => {
+                        getPokemon();
+                        setTimeout(() => {
+                                let crd1 = document.getElementById('card1');
+                                let scr1 = crd1.querySelector('#experience').textContent;
+                                let crd2 = document.querySelector('#card2');
+                                let src2 = crd2.querySelector('#experience').textContent;
+                                scr1 = Number(scr1);
+                                src2 = Number(src2);
+                                console.log(scr1, src2);
+                                if (scr1 > src2) {
+                                        score1 = score1 + 1;
+                                        document.querySelector('#p1_score').textContent = `Score: ${score1}`;
+                                }
+                                else if (scr1 < src2) {
+                                        score2 = score2 + 1;
+                                        document.querySelector('#p2_score').textContent = `Score: ${score2}`;
+                                }
+
+                        }, 1000)
+                })
+
+        </script>
+</body>
+
+</html>

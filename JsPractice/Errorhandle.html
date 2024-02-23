@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        setTimeout(()=>{
+            console.log('Wifi hacked...!');
+        },1000)
+
+        setTimeout(()=>{
+            console.log('Ip tracked...!');
+        },2000)
+
+        try{ // it is shynchrnous handeller not handle schedule element or function
+            console.log(hack); 
+        }
+        catch(error){
+            console.log('Error is',error);
+        }
+        finally{
+            console.log('Error prevented');
+        }
+        
+
+        setTimeout(()=>{
+            console.log('Process...!');
+        },3000)
+
+        setTimeout(()=>{
+            console.log('Completed...!');
+        },4000)
+    </script>
+</body>
+</html>

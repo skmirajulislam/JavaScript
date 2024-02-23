@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: grey;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        /*
+        if we add a async before a function then 
+        it make sure about it returns a promise .
+        be a part of asynorous javascript.
+        */
+        async function name() {
+            return 5;
+        }
+
+        // here is the function returing Value as well as promise
+        name().then((result) => {
+            alert(result)
+        }).catch((err) => {
+            console.log("Error occured");
+        });
+
+    </script>
+    <script>
+        // Example of Async function
+        async function Wether() {
+            let WetherIndia = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("27")
+                }, 1000)
+            })
+
+            let WetherPakistan = new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    resolve("21")
+                }, 5000)
+            })
+
+            WetherIndia.then((temparature) => {
+                alert(`Temparature : ${temparature}`)
+            })
+
+            WetherPakistan.then((temparature) => {
+                alert(`Temparature : ${temparature}`)
+            })
+
+            console.log("Fetching data...");
+
+            let Pakistan = await WetherPakistan;
+            let India = await WetherIndia;
+
+            return [Pakistan, India]
+        }
+        /*
+        1.  Using await pauses the execution of its surrounding 
+            async function until the promise is settled (that is, fulfilled or rejected).
+
+        2.  The await keyword can only be used inside an async function.
+        
+        3.  The await keyword makes the function pause the execution and 
+            wait for a resolved promise before it continues
+        */
+        console.log('Wether control');
+
+        // Multiple async functions execules parallely. for example
+
+        const Chatsupport = async () => {
+            console.log("TRANSFER COMPLEATED i am  not waiting");
+            return {Payment:'granted'};
+        }
+
+        const main = async () => {
+            console.log("Welcome to control room");
+
+            let a = await Wether();
+            let b = await Chatsupport();
+
+            
+            console.log(a);
+            console.log(b);
+        }
+
+        main()
+    </script>
+</body>
+
+</html>

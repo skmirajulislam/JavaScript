@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button onclick="alert('Give me one plate of chowmein')">chow</button>
+    <button onclick="alert('Give me one plate of Pakhora')">Pakhora</button>
+    <button onclick="alert('Give me one plate of momo')">momo</button>
+
+    <h1>Bookmarks</h1>
+    <a href="https://google.com"><button>Google</button></a>
+    <button id="google">Google 1</button>
+    <script>
+        document.getElementById('google').addEventListener('click', () => {
+            let url = "https://www.google.com"
+            let win = window.open(url, "", 'width=500,scrollbars=yes,resizable=yes')
+            win.focus();
+        })
+
+        async function fetchData() {
+            let url = "https://jsonplaceholder.typicode.com/todos/1";
+            console.log(await fetchContent(url));
+        }
+
+        setInterval(fetchData, 3000);
+
+        async function fetchContent(url) {
+            try {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error(`Error: ${error.message}`);
+            }
+        }
+
+    </script>
+</body>
+
+</html>

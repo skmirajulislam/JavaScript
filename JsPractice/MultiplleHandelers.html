@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        p1 = new Promise((resolve,reject)=>{
+            console.log("Hey i am not resolved");
+            setTimeout(() => {
+                resolve()
+            }, 2000);
+        })
+
+        p1.then((result) => { //Handelers 1
+            console.log("Payment sucessful");
+            return new Promise((resolve,reject)=>{
+                setTimeout(()=>{
+                    resolve('GRANTED')
+                },6000)
+            })
+        }).then((result)=>{ // sub handelers
+            console.log(result);
+        })
+
+        p1.then((result) => { // handelers 2
+            console.log("Congratulations this promise resolved");
+        }).catch((err) => {
+            console.log("keep trying");
+        });
+    </script>
+</body>
+</html>

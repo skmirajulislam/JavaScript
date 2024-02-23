@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .smile {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #fcba03;
+            height: 400px;
+            width: 400px;
+            border-radius: 50%;
+        }
+
+        #eye1 {
+            position: absolute;
+            top: 30%;
+            left: 25%;
+            height: 40px;
+            width: 40px;
+            background-color: black;
+            border-radius: 50%;
+            border-style: outset;
+        }
+
+        #eye2 {
+            position: absolute;
+            top: 30%;
+            left: 65%;
+            height: 40px;
+            width: 40px;
+            background-color: black;
+            border-radius: 50%;
+            border-style: outset;
+        }
+
+        #mouth {
+            position: absolute;
+            background-color: indianred;
+            top: 220px;
+            left: 90px;
+            width: 215px;
+            height: 90px;
+            border-radius: 7px 7px 100px 100px;
+            border-style: outset;
+            border-width: 5px;
+        }
+
+        body {
+            background-color: blanchedalmond;
+        }
+
+        p {
+            position: absolute;
+            font-size: 50px;
+            font-family: sans-serif;
+            top: 80vh;
+            left: 30vw;
+        }
+
+        @media (max-width: 768px) {
+            p {
+                font-size: 20px;
+                text-align: center;
+                left: 30vw;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="smile">
+        <div id="eye1"></div>
+        <div id="eye2"></div>
+        <div id="mouth"></div>
+    </div>
+    <p> Are you Programmer ?</p>
+</body>
+
+</html>

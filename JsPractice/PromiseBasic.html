@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const recquest =  new Promise((resolve,reject)=>{
+            setTimeout(()=>{
+                console.log('After 1 second');
+                resolve('promise done');
+                //reject("Recquest rejected");
+            },1000)
+        });
+
+        // 3 state of promise {pending,fiullfilled,rejected}
+        recquest.then((value)=>{ // if promise returned then and only
+            console.log(value);
+        }).catch((err)=>{ // if error or rejected handle it
+            console.log(err)
+        }).finally(()=>{ // execute always not care everything
+            console.log('Recquest complited');
+        })
+
+        console.log(recquest)
+    </script>
+</body>
+</html>

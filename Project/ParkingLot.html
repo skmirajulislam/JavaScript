@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <title>React App</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const App = () => {
+      // State variables for each type of vehicle
+      const [carCount, setCarCount] = React.useState(0);
+      const [bikeCount, setBikeCount] = React.useState(0);
+      const [scootyCount, setScootyCount] = React.useState(0);
+      const [bicycleCount, setBicycleCount] = React.useState(0);
+
+      // Event handlers to increase and decrease vehicle counts
+      const increaseCount = (type) => {
+        switch (type) {
+          case 'car':
+            setCarCount(carCount + 1);
+            break;
+          case 'bike':
+            setBikeCount(bikeCount + 1);
+            break;
+          case 'scooty':
+            setScootyCount(scootyCount + 1);
+            break;
+          case 'bicycle':
+            setBicycleCount(bicycleCount + 1);
+            break;
+          default:
+            break;
+        }
+      };
+
+      const decreaseCount = (type) => {
+        switch (type) {
+          case 'car':
+            setCarCount(Math.max(carCount - 1, 0));
+            break;
+          case 'bike':
+            setBikeCount(Math.max(bikeCount - 1, 0));
+            break;
+          case 'scooty':
+            setScootyCount(Math.max(scootyCount - 1, 0));
+            break;
+          case 'bicycle':
+            setBicycleCount(Math.max(bicycleCount - 1, 0));
+            break;
+          default:
+            break;
+        }
+      };
+
+      return (
+        <>
+          <p>List of all the vehicles count in the parking.</p>
+          <ol>
+            <li>
+              <p>
+                <b>Car:</b> &emsp;
+                <button onClick={() => increaseCount('car')}>Increase</button>
+                &emsp;
+                <button onClick={() => decreaseCount('car')}>Decrease</button>
+                &emsp; Count: {carCount}
+              </p>
+            </li>
+            <li>
+              <p>
+                <b>Bike:</b> &emsp;
+                <button onClick={() => increaseCount('bike')}>Increase</button>
+                &emsp;
+                <button onClick={() => decreaseCount('bike')}>Decrease</button>
+                &emsp; Count: {bikeCount}
+              </p>
+            </li>
+            <li>
+              <p>
+                <b>Scooty:</b> &emsp;
+                <button onClick={() => increaseCount('scooty')}>Increase</button>
+                &emsp;
+                <button onClick={() => decreaseCount('scooty')}>Decrease</button>
+                &emsp; Count: {scootyCount}
+              </p>
+            </li>
+            <li>
+              <p>
+                <b>Bicycle:</b> &emsp;
+                <button onClick={() => increaseCount('bicycle')}>Increase</button>
+                &emsp;
+                <button onClick={() => decreaseCount('bicycle')}>Decrease</button>
+                &emsp; Count: {bicycleCount}
+              </p>
+            </li>
+          </ol>
+        </>
+      );
+    };
+
+    const rootElement = ReactDOM.createRoot(document.getElementById("root"));
+    rootElement.render(<App />);
+  </script>
+</body>
+
+</html>

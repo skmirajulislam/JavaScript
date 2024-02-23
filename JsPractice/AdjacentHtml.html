@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="first">Hey i am first</div>
+    <script>
+        // let  a = first.getAttribute('class') Same as given below
+        let a = document.getElementById('first');
+        a.insertAdjacentHTML('beforeend','<div id="text1"> Before end </div>')
+        a.insertAdjacentHTML('afterend','<div id="text2"> after end </div>')
+        a.insertAdjacentHTML('beforebegin','<div id="text3"> Before begin </div>')
+        a.insertAdjacentHTML('afterbegin','<div id="text4"> after begin </div>')
+
+        // node remover html
+        // a.remove() remove whole html
+
+    </script>
+</body>
+</html>

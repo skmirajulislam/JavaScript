@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        document.write('Hello');
+
+        a = setInterval(() => { // inner function is call back function it returns promise
+            alert('Hello bye our primium plan');
+        }, 2000) // Repeating this after 2 second interval
+
+        let b = prompt('Enter your choice :');
+        if ('n' === b) {
+            clearInterval(a); // end Reapeting of set Interval
+        }
+
+
+        c = setTimeout(() => {
+            alert('Hello bye our primium plan');
+        }, 2000) // Show this after 2 second 
+
+        let d = prompt('Enter your choice :');
+        if ('n' === d) {
+            clearTimeout(c); // Clearing final setTime out
+        }
+
+        /*
+        sum = (a, b) => {
+            document.write(a + b);
+        }
+
+        setTimeout(sum, 1000, 2, 2) output 4
+        */
+    </script>
+</body>
+
+</html>

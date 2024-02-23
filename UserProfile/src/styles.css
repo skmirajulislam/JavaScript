@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+}
+
+.hero,
+.about,
+.skill {
+    margin-block: 30px;
+    margin: 20px;
+}
+
+.hero p{
+    margin-top: 5px;
+}
+
+#one{
+    font-weight: 900;
+}
+
+.skill ul {
+    list-style: none;
+    display: flex;
+}
+
+.skill li {
+    background-color: cyan;
+    padding: 10px;
+    margin-right: 20px;
+    border-radius: 5px;
+    /* You can adjust this value to add or reduce space */
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <title>React App</title>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const Form = ({ onSubmit }) => {
+      const handleSubmit = (event) => {
+        event.preventDefault();
+        const name = event.target.name.value;
+        const marks = event.target.marks.value;
+        onSubmit({ name, marks });
+        event.target.reset();
+      };
+
+      return (
+        <form onSubmit={handleSubmit}>
+          <label>
+            Student's Name:
+            <input type="text" name="name" required />
+          </label>
+          <label>
+            Marks:
+            <input type="number" name="marks" required />
+          </label>
+          <button type="submit">Submit</button>
+        </form>
+      );
+    };
+
+    const Result = ({ students }) => (
+      <table>
+        <thead>
+          <tr>
+            <th>Student's Name</th>
+            <th>Marks</th>
+          </tr>
+        </thead>
+        <tbody>
+          {students.map((student, index) => (
+            <tr key={index}>
+              <td>{student.name}</td>
+              <td>{student.marks}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    );
+
+    const App = () => {
+      const [students, setStudents] = React.useState([]);
+
+      const handleFormSubmit = (student) => {
+        setStudents([...students, student]);
+      };
+
+      return (
+        <>
+          <Form onSubmit={handleFormSubmit} />
+          <Result students={students} />
+        </>
+      );
+    };
+
+    const rootElement = ReactDOM.createRoot(document.getElementById("root"));
+    rootElement.render(<App />);
+  </script>
+</body>
+
+</html>

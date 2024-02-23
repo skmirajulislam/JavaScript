@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!---CDN link for React-->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!--babel CDN is an external liberary for coverting language-->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <!--you can import from other file or code it here inside script-->
+    <!-- <script src="./ReactSetup.js" type="text/babel"></script> -->
+    <script type="text/babel"> // must add this for compiling.
+        // it support class based and function based programming. 
+        // Function based component here exaple of it.
+
+
+        const Sum = () =>{
+            let data = 2+2;
+            return (
+                <>
+                <p>sum is {data}</p>
+                </>
+            );
+        }
+
+        function Main(){
+            return(
+                <>
+                <h2>JSX is Better then HTML</h2>
+                </>
+            );
+        }
+
+        function App() {
+            return (
+                <>
+                    <h1>Hello JSX</h1>
+                    <p>Hello how are you</p>
+                    <Sum/>
+                </>
+            );
+        }
+
+        // const App = () => {
+        //     return (
+        //         <>
+        //             <h1>Hello JSX</h1>
+        //             <p>Hello how are you</p>
+        //         </>
+        //     );
+        // }
+
+
+
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            <>
+                <App />
+                <Main/>
+            </>
+            ); // its not a function its an component . declare it as an React functional Component
+
+            /*
+              We use Babel with React to transpile the JSX code into simple React functions that can be understood by browsers. Using this way we can assure that our JSX code can work in almost any browser. 
+              This combination is widely used in modern-day web development.
+              Babel is a JavaScript compiler that converts modern JavaScript code into a version compatible with all browsers. Babel enables React developers to use the latest JavaScript syntax in their components.
+              Babel transpiles modern JavaScript for use in React components and all browsers.
+
+            
+              What is the meaning of transpile?
+              -> A subset of compilers which take in a source code file and convert it to another source code file in some other language or a different version of the same language
+            */
+    </script>
+</body>
+
+</html>

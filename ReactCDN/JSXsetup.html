@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!---CDN link for React-->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!--babel CDN is an external liberary for coverting language-->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const Sum = () => 2+2; 
+
+        const header = <h2> hello Miraj </h2>; // Jsx global expression 
+
+        function App(){
+            let name = 'Miraj'
+            let Yes = true;
+            let non = null;
+            let Und = undefined;
+            const MyId = () => 'roll 03';
+
+            return(
+                <>
+                 <h1>Let's lern JSX</h1>
+                 <p>Hello {name} welcome to JSX</p>
+                 <p>{Yes.toString()} is a Bollean value</p>
+                 <p>non is {non}</p>
+                 <p>Und is {Und}</p>
+                 <p>Function is component {<Sum/>}</p>
+                 <p>Function is call {Sum()}</p>
+                 <p>Jsx expression is : - </p>
+                 {header}
+                 <p>Id of {name} is {MyId()}</p>
+                 <p>Id of {name} is {<MyId/>}</p>
+                </>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            <>
+                <App />
+            </>
+        );
+    </script>
+</body>
+
+</html>

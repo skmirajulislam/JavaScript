@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!---CDN link for React-->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!--babel CDN is an external liberary for coverting language-->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+
+        const data = [1, 2, 3, 4, 5];
+
+        const obj = {
+            name: 'Sk Miraj',
+            id: 3,
+            render: () => obj.id,
+        }
+        
+        const cars = ['audi','bmw','RR','Lamborghini','Tesla']
+
+        function App() {
+            const evenNumbers = data.filter((number) => number % 2 === 0);
+            return (
+                <>
+                    <p>Displaying Arrays : -</p>
+                    <p>Roll is {data[2]} Name is {obj.name}</p>
+                    <p>Roll {obj.render()} is a good boy</p>
+                    {data.map((num, index) => <h2 key={index}>{num}</h2>)}
+                    <p>Even data is :-</p>
+                    {evenNumbers.map((num, index) => <h2 key={index}>{num}</h2>)}
+                    <p>Cars : -</p>
+                    <ul>
+                    {cars.map((car,index) => (
+                            <li key={index}>{car}</li>
+                        ))}
+                    </ul>
+                </>
+            );
+        }
+
+
+        ReactDOM.createRoot(document.getElementById('root')).render(
+            <>
+                <App />
+            </>
+        );
+    </script>
+</body>
+
+</html>
